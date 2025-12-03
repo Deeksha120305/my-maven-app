@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkout scm
+                git url: 'https://github.com/Deeksha120305/my-maven-app.git', branch: 'main'
             }
         }
 
@@ -16,7 +16,7 @@ pipeline {
 
         stage('Archive') {
             steps {
-                archiveArtifacts artifacts: 'target/*.jar'
+                archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
             }
         }
     }
